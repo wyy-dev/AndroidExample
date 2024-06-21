@@ -1,0 +1,75 @@
+plugins {
+    alias(libs.plugins.android.library)
+    id "com.vanniktech.maven.publish" version "0.28.0"
+}
+
+android {
+    namespace 'com.wyy.mylibrary'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
+
+import com.vanniktech.maven.publish.SonatypeHost
+
+mavenPublishing {
+//    publishToMavenCentral(SonatypeHost.DEFAULT)
+    // or when publishing to https://s01.oss.sonatype.org
+    publishToMavenCentral(SonatypeHost.S01)
+    // or when publishing to https://central.sonatype.com/
+//    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
+    coordinates("com.example.mylibrary", "library-name", "1.0.3-SNAPSHOT")
+
+    pom {
+        name = "My Library"
+        description = "A description of what my library does."
+        inceptionYear = "2020"
+        url = "https://github.com/username/mylibrary/"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        }
+        developers {
+            developer {
+                id = "username"
+                name = "User Name"
+                url = "https://github.com/username/"
+            }
+        }
+        scm {
+            url = "https://github.com/username/mylibrary/"
+            connection = "scm:git:git://github.com/username/mylibrary.git"
+            developerConnection = "scm:git:ssh://git@github.com/username/mylibrary.git"
+        }
+    }
+}
