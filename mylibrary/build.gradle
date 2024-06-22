@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.wyy.mylibrary'
+    namespace 'io.github.mylibrary'
     compileSdk 34
 
     defaultConfig {
@@ -13,7 +13,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -40,18 +39,18 @@ import com.vanniktech.maven.publish.SonatypeHost
 mavenPublishing {
 //    publishToMavenCentral(SonatypeHost.DEFAULT)
     // or when publishing to https://s01.oss.sonatype.org
-    publishToMavenCentral(SonatypeHost.S01)
+//    publishToMavenCentral(SonatypeHost.S01)
     // or when publishing to https://central.sonatype.com/
-//    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
     signAllPublications()
-    coordinates("com.example.mylibrary", "library-name", "1.0.3-SNAPSHOT")
+    coordinates("io.github.wyy-dev", "mylibrary", "0.0.1")
 
     pom {
-        name = "My Library"
+        name = "mylibrary"
         description = "A description of what my library does."
         inceptionYear = "2020"
-        url = "https://github.com/username/mylibrary/"
+        url = "https://github.com/wyy-dev/AndroidExample/"
         licenses {
             license {
                 name = "The Apache License, Version 2.0"
@@ -61,15 +60,15 @@ mavenPublishing {
         }
         developers {
             developer {
-                id = "username"
-                name = "User Name"
-                url = "https://github.com/username/"
+                id = "wyy-dev"
+                name = "wyy"
+                url = "https://github.com/wyy-dev/"
             }
         }
         scm {
-            url = "https://github.com/username/mylibrary/"
-            connection = "scm:git:git://github.com/username/mylibrary.git"
-            developerConnection = "scm:git:ssh://git@github.com/username/mylibrary.git"
+            url = "https://github.com/wyy-dev/AndroidExample/"
+            connection = "scm:git:git://github.com/wyy-dev/AndroidExample.git"
+            developerConnection = "scm:git:ssh://git@github.com/wyy-dev/AndroidExample.git"
         }
     }
 }

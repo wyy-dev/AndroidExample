@@ -1,4 +1,4 @@
-package com.wyy.mylibrary;
+package io.github.mylibrary;
 
 /**
  * @author: 王勇勇

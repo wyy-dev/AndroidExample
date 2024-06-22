@@ -1,4 +1,4 @@
-package com.wyy.mylibrary;
+package io.github.mylibrary;
 
 import org.junit.Test;
 
