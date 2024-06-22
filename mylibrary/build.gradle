@@ -9,7 +9,8 @@ android {
 
     defaultConfig {
         minSdk 24
-
+        versionCode 1
+        versionName "0.0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -32,6 +33,8 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
+    implementation 'com.guolindev.permissionx:permissionx:1.8.0'
 }
 
 import com.vanniktech.maven.publish.SonatypeHost
@@ -44,8 +47,10 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
     signAllPublications()
-    coordinates("io.github.wyy-dev", "mylibrary", "0.0.1")
+}
 
+mavenPublishing {
+    coordinates("io.github.wyy-dev", "mylibrary", "0.0.2")
     pom {
         name = "mylibrary"
         description = "A description of what my library does."
